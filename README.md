@@ -97,11 +97,12 @@ end
 ## Step 5:
  for loging out / clearing the cookie just make a route and point it to your auth controller logout action. Your auth controller should inherit from `JwtSecure::AuthController` and must have `login` and `logout` methods with all required instance variables.
 
-## More info bellow
+## Skiping authentication checks for certian routes
 
 if you want some routes to not have auth and can be accessed by anytone you can bypass auth check for that controller using `skip_before_action :authenticate_jwtsecure`
 
-Bellow is example of the test route without auth 
+Bellow is example of the test route without auth checks
+
 path: app/controllers/test_controller.rb
 ```ruby
 class Api::TestController < ApiController 
@@ -116,7 +117,7 @@ end
 ```
 
 ### @POST REQUEST -> /api/login
-This will automaticly set a http only cookie in your cookies in browser or any client you use like postman
+This will automaticly set a http only cookie in your cookies in browser or any client you use like postman. And at any route that has a controller that's inheriting from `ApiController` or whatever name you have for the base controller that request will be automaticly checked for a http only cookie and if that cookie is valid, if valid then it will put the user object retrived from model to `@current_user` instance that can be used anywhere in the controller, else it will give a response back saying invalid token if http cookie not present or it's wrong.
 <table>
   <tr>
     <td>
