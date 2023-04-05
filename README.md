@@ -17,7 +17,7 @@ require 'jwt_secure'
 
 Rails.application.routes.draw do
   namespace :api do
-    get "/login", to: "auth#login"
+    post "/login", to: "auth#login"
     get "/logout", to: "auth#logout"
     get "/test", to: "test#some" 
   end
