@@ -115,6 +115,19 @@ class Api::TestController < ApiController
 end
 ```
 
+### @POST REQUEST -> /api/login
+This will automaticly set a http only cookie in your cookies in browser or any client you use like postman
+<table>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/0xMALVEE/jwt-secure/main/demo-rails-api/demo-images/POST_LOGIN.png" alt="POST_LOGIN">
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/0xMALVEE/jwt-secure/main/demo-rails-api/demo-images/POST_LOGIN_COOKIE.png" alt="POST_LOGIN_COOKIE">
+    </td>
+  </tr>
+</table>
+
 
 
 <!-- CONTRIBUTING -->
