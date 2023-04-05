@@ -1,5 +1,6 @@
 class Api::AuthController < JwtSecure::AuthController
-
+  skip_before_action :verify_authenticity_token
+  
   def login
     @jwtsecure_usermodel = User
     @jwtsecure_findby = { username: params[:username] }
