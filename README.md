@@ -32,8 +32,6 @@ Create a base controller like `ApiController < JwtSecure::ApiJwtController` that
 path: app/controllers/api_controller.rb
 ```ruby
 class ApiController < JwtSecure::ApiJwtController
-  skip_before_action :verify_authenticity_token
-
   def authenticate_jwtsecure
     @jwtsecure_cookiename = :mysite_token
     @jwtsecure_secret = "some_key_string_secret"
@@ -55,6 +53,8 @@ make sure you have defined the authenticate_jwtsecure method and made two instan
 path: app/controller/api/auth_controller.rb
 ```ruby
 class Api::AuthController < JwtSecure::AuthController
+  skip_before_action :verify_authenticity_token
+
   def login
     @jwtsecure_usermodel = User
     @jwtsecure_findby = { username: params[:username] }
